@@ -19,6 +19,12 @@ let images = [
   "img/18.jpg",
 ];
 
+
+/**
+ * Renders the images in the `images` array into the HTML element with the ID "imageContainer".
+ * Clears the existing content of the container before rendering the new images.
+ * Iterates over the `images` array and appends the HTML for each image to the container.
+ */
 function render() {
   let content = document.getElementById("imageContainer");
 
@@ -31,6 +37,14 @@ function render() {
   }
 }
 
+
+/**
+ * Generates HTML markup for an image box.
+ *
+ * @param {string} image - The URL of the image to be displayed.
+ * @param {number} i - The index of the image, used for the onclick event.
+ * @returns {string} The HTML string for the image box.
+ */
 function renderHtml (image, i) {
   return /*html*/ `
   <div onclick="openFullscreen(${i})" class="imageBox">
@@ -39,6 +53,12 @@ function renderHtml (image, i) {
   `;
 }
 
+
+/**
+ * Opens an image in fullscreen mode.
+ *
+ * @param {number} i - The index of the image to be displayed in fullscreen.
+ */
 function openFullscreen(i) {
   const fullscreen = document.getElementById("fullscreen");
   fullscreen.style.display = "flex";
@@ -51,6 +71,14 @@ function openFullscreen(i) {
   fullscreen.innerHTML = openFullscreenHtml(image, i);
 }
 
+
+/**
+ * Generates HTML for displaying an image in fullscreen mode with navigation buttons.
+ *
+ * @param {string} image - The URL of the image to be displayed in fullscreen.
+ * @param {number} i - The index of the current image, used for navigation.
+ * @returns {string} The HTML string for the fullscreen image display with navigation buttons.
+ */
 function openFullscreenHtml (image, i) {
   return /*html*/ `
   <button onclick="previousImg(${i})"><img src="./img/chevron-left-solid.svg" alt=""></button>
@@ -61,6 +89,12 @@ function openFullscreenHtml (image, i) {
 `;
 }
 
+
+/**
+ * Closes the fullscreen view when the event target is the fullscreen element.
+ *
+ * @param {Event} event - The event object triggered by the user interaction.
+ */
 function closeFullscreen(event) {
   const fullscreen = document.getElementById("fullscreen");
   if (event.target === fullscreen) {
@@ -72,6 +106,11 @@ function closeFullscreen(event) {
   }
 }
 
+
+/**
+ * Closes the start screen by removing the blur effect, fading out the opacity,
+ * and then setting the display to "none" after a delay.
+ */
 function closeStartscreen() {
   const startScreen = document.getElementById("startScreen");
 
@@ -83,6 +122,12 @@ function closeStartscreen() {
   }, 1000);
 }
 
+
+/**
+ * Advances to the next image in the gallery.
+ *
+ * @param {number} i - The current index of the image.
+ */
 function nextImg(i) {
   i++;
   if (i == images.length) {
@@ -91,6 +136,12 @@ function nextImg(i) {
   openFullscreen(i);
 }
 
+
+/**
+ * Navigates to the previous image in the gallery.
+ *
+ * @param {number} i - The current index of the image.
+ */
 function previousImg(i) {
   i--;
   if (i < 0) {
