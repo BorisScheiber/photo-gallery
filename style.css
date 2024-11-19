@@ -1,0 +1,182 @@
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+img {
+  box-sizing: content-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #030c1b;
+  overflow: hidden;
+}
+
+.imageContainer {
+  display: grid;
+  gap: 16px;
+  padding: 16px;
+  grid-template-columns: repeat(3, 1fr);
+  position: relative;
+}
+
+.imageBox {
+  height: 300px;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: rgba(255, 252, 252, 0.1) 0px 0px 5px 2px;
+}
+
+.imageBox img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transition: all 200ms ease-in-out 0s;
+}
+
+.imageBox:hover img {
+  transform: scale(1.05);
+  filter: brightness(115%);
+}
+
+.fullscreen {
+  z-index: 500;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: rgba(3, 12, 27, 0.95);
+  width: 100%;
+  height: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.fullscreenBox {
+  max-width: 1400px;
+  max-height: 90%;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: rgb(0 0 0 / 50%) 0px 0px 20px 6px;
+}
+
+.fullscreenBox img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+
+.fullscreen button {
+  background-color: transparent;
+  border: none;
+  color: whitesmoke;
+  width: 5rem;
+  min-width: 16px;
+  cursor: pointer;
+  padding: 0;
+  transition: all 100ms ease-in-out 0s;
+}
+
+.fullscreen button:hover {
+  transform: scale(1.1);
+}
+
+.fullscreen button img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.startScreen {
+  z-index: 800;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  background-color: rgba(3, 12, 27, 0.7);
+  backdrop-filter: blur(10px);
+  transition: opacity 1s ease-in-out, backdrop-filter 1s ease-in-out;
+  overflow: hidden;
+}
+
+.startScreenBox {
+  border-radius: 50%;
+  overflow: hidden;
+  width: 50%;
+  max-width: 300px;
+  border: 3px solid #ffffff;
+  cursor: pointer;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s cubic-bezier(0.58, -0.4, 0.33, 1.31);
+}
+
+.startScreenBox img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+
+.startScreenBox:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 1600px) {
+  .imageBox {
+    height: 250px;
+  }
+}
+
+@media (max-width: 800px) {
+  .imageContainer {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .fullscreen {
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .imageBox {
+    height: 200px;
+  }
+}
+
+@media (max-width: 450px) {
+  .imageBox {
+    height: 150px;
+  }
+}
+
+@media (max-width: 350px) {
+  .imageBox {
+    height: 110px;
+  }
+
+  .fullscreen {
+    gap: 0px;
+    padding: 4px;
+  }
+}
